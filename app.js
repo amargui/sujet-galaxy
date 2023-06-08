@@ -1,43 +1,20 @@
-const tableA = document.createElement("div");
-tableA.id = "my-tableA";
-document.body.appendChild(tableA);
-console.log(tableA);
+// Tableau pour stocker les instances de Tabulator
+const tables = [];
 
-const tableB = document.createElement("div");
-tableB.id = "my-tableB";
-document.body.appendChild(tableB);
-console.log(tableB);
-
-const tableC = document.createElement("div");
-tableC.id = "my-tableC";
-document.body.appendChild(tableC);
-console.log(tableC);
-
-const tableD = document.createElement("div");
-tableD.id = "my-tableD";
-document.body.appendChild(tableD);
-console.log(tableD);
-
-
- // Créer une instance de Tabulator avec la configuration souhaitée
-      let table1 = new Tabulator("#my-tableA", {
-        columns: [],
-      });
-      let table2 = new Tabulator("#my-tableB", {
-        columns: [],
-      });
-      let table3 = new Tabulator("#my-tableC", {
-        columns: [],
-      });
-      let table4 = new Tabulator("#my-tableD", {
-        columns: [],
-      });
+// Générer les tables et les ajouter au document
+const tableNames = ["A", "B", "C", "D"];
+tableNames.forEach((name) => {
+  const tableElement = document.createElement("div");
+  tableElement.id = `my-table${name}`;
+  document.body.appendChild(tableElement);
+  tables.push(new Tabulator(`#my-table${name}`, { columns: [] }));
+});
 
 // Appeler la fonction fetchData pour chaque fichier JSON
-fetchData("json/221410_A.json", table1);
-fetchData('json/221410_B.json', table2);
-fetchData('json/244138_A.json', table3);
-fetchData('json/244138_B.json', table4);
+fetchData("json/221410_A.json", tables[0]);
+fetchData("json/221410_B.json", tables[1]);
+fetchData("json/244138_A.json", tables[2]);
+fetchData("json/244138_B.json", tables[3]);
 
 // Récupérer les données JSON via fetch
 function fetchData(nomfichier, table) {
@@ -46,9 +23,6 @@ function fetchData(nomfichier, table) {
     .then((jsonData) => {
       // Convertir le JSON en tableau
       let tableData = [];
-
-
-     
 
       jsonData.forEach((obj) => {
         let rowData = {};
