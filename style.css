@@ -1,0 +1,66 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  div {
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Styles du tableau */
+  .table-astronomical {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .table-astronomical th,
+  .table-astronomical td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table-astronomical th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .table-astronomical td {
+    color: #555;
+  }
+  
+  .table-astronomical tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Styles du bouton */
+  button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
