@@ -186,33 +186,32 @@ function createTable(elementId) {
   
     rows.forEach((row) => {
       const redshift = row.redshift;
-  
       if (diffRows.hasOwnProperty(redshift)) {
-        const existingRow = diffRows[redshift];
-        let diffFound = false;
-  
-        for (const key in row) {
-          if (row.hasOwnProperty(key)) {
-            if (key !== "redshift" && row[key] !== existingRow[key]) {
-              diffFound = true;
-              break;
+          const existingRow = diffRows[redshift];
+          let diffFound = false;
+          
+          for (const key in row) {
+              if (row.hasOwnProperty(key)) {
+                  if (key !== "redshift" && row[key] !== existingRow[key]) {
+                      diffFound = true;
+                      break;
+                    }
+                }
             }
-          }
+            
+            if (diffFound) {
+                diffRows[redshift] = row;
+            }
+        } else {
+            diffRows[redshift] = row;
         }
-  
-        if (diffFound) {
-          diffRows[redshift] = row;
-        }
-      } else {
-        diffRows[redshift] = row;
-      }
     });
-  
+    console.log(diffRows);
+    
     const diffTable = new Tabulator("#diff-table", {
       columns: table.getColumns(),
       data: Object.values(diffRows),
     });
-    console.log(diffTable);
   }
   
   document.getElementById("btnValider").addEventListener("click", function () {
@@ -228,5 +227,5 @@ function createTable(elementId) {
     }
   });
   
-  comparerRedshift(table1);
+//   comparerRedshift(table1);
   
