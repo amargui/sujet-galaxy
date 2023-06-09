@@ -8,38 +8,27 @@
     <title>Document</title>
     <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
-    <!-- <script src="app.js" defer></script> -->
-    <!-- <script src="app2.js" defer></script> -->
     <script src="app3.js" defer></script>
-    <!-- <script src="app4.js" defer></script> -->
 </head>
 
 <body>
     <div>
+        <h1>Quel fichier souhaité vous comparer</h1>
 
-        <!-- <h1>Tableau 221410</h1>
-            <div id="my-tableA"></div>
-            <div id="my-tableB"></div>
-        </div>
+        <select id="selectFile">
+            <option id="tableA">221410</option>
+            <option id="tableB">244138</option>
+        </select>
 
-        <div>
-            <h1>Tableau 244138</h1>
-            <div id="my-tableC"></div>
-            <div id="my-tableD"></div>
-        </div> -->
+        <button id="btnValider">Valider</button>
 
-
-        <h1>Tableau 221410</h1>
         <div id="my-table-221410"></div>
-
-        <h1>Tableau 244138</h1>
         <div id="my-table-244138"></div>
 
-        <button><a href="comparer.html">Comparer</a></button>
+        <div id="diff-table"></div>
 
 
     </div>
-
 
 
 </body>

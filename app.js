@@ -3,7 +3,8 @@ const tables = [];
 
 // Générer les tables et les ajouter au document
 const tableNames = ["A", "B", "C", "D"];
-tableNames.forEach((name) => {
+const tableFiles = ["221410_A.json", "221410_B.json", "244138_A.json", "244138_B.json"];
+tableNames.forEach((name, index) => {
   const tableElement = document.createElement("div");
   tableElement.id = `my-table${name}`;
   document.body.appendChild(tableElement);
@@ -11,14 +12,14 @@ tableNames.forEach((name) => {
 });
 
 // Appeler la fonction fetchData pour chaque fichier JSON
-fetchData("json/221410_A.json", tables[0]);
-fetchData("json/221410_B.json", tables[1]);
-fetchData("json/244138_A.json", tables[2]);
-fetchData("json/244138_B.json", tables[3]);
+fetchData("json/221410_A.json", tables[0], "A");
+fetchData("json/221410_B.json", tables[1], "B");
+fetchData("json/244138_A.json", tables[2], "C");
+fetchData("json/244138_B.json", tables[3], "D");
 
 // Récupérer les données JSON via fetch
-function fetchData(nomfichier, table) {
-  fetch(nomfichier)
+function fetchData(nomFichier, table, lettre) {
+  fetch(nomFichier)
     .then((response) => response.json())
     .then((jsonData) => {
       // Convertir le JSON en tableau
@@ -27,9 +28,14 @@ function fetchData(nomfichier, table) {
       jsonData.forEach((obj) => {
         let rowData = {};
 
+        // Ajouter la colonne avec la lettre du fichier
+        rowData["Lettre"] = lettre;
+        rowData["Type"] = lettre; // Ajouter la colonne "Type"
+
         // Parcourir les propriétés de chaque objet
         for (let key in obj) {
-          rowData[key] = obj[key];
+          // Si la valeur de la propriété est null, afficher "null"
+          rowData[key] = obj[key] !== null ? obj[key] : "null";
         }
 
         // Ajouter la ligne de données au tableau
@@ -46,6 +52,7 @@ function fetchData(nomfichier, table) {
 
       // Ajouter les données à la table
       table.addData(tableData);
+      console.log(tableData);
     })
     .catch((error) => {
       console.error(
@@ -54,3 +61,4 @@ function fetchData(nomfichier, table) {
       );
     });
 }
+
