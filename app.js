@@ -1,3 +1,4 @@
+
 // Tableau pour stocker les instances de Tabulator
 const tables = [];
 
@@ -61,4 +62,3 @@ function fetchData(nomFichier, table, lettre) {
       );
     });
 }
-
